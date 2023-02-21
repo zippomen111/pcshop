@@ -1,0 +1,30 @@
+@import "./../../scss/variables";
+
+//categories
+.content-top {
+    padding: 40px 0;
+}
+
+.categories__list {
+    display: flex;
+    gap: 10px;
+
+}
+
+.categories__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: $blue;
+    width: 100px;
+    height: 25px;
+    border: 1px solid $black;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.active {
+    color: $white;
+    background: $black;
+}

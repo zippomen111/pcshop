@@ -1,0 +1,20 @@
+@import "./../../scss/variables";
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.img {
+    height: 70px;
+    width: 70px;
+}
+
+.descriprion {
+    color: $white;
+}
+
+.title,
+.text {
+    color: $white;
+}

@@ -1,0 +1,25 @@
+@import "./../../scss/variables";
+
+//cart
+.cart {
+    background: aqua;
+    color: $black;
+    height: 40px;
+    width: 90px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+
+    &__div {
+        height: 25px;
+        color: $black;
+        width: 5px;
+
+    }
+}
+
+.img {
+    height: 30px;
+    width: 30px;
+}
