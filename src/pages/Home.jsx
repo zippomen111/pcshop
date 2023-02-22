@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 // import ContentTop from '../components/Content-top';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -6,17 +7,20 @@ import Item from '../components/Item';
 import Skeleton from '../components/Skeleton';
 
 const Home = () => {
+    const categoryId = useSelector((state) => state.filter.categoryId)
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
+    const category = categoryId > 0 ? `category=${categoryId}` : ''
+    const sort = useSelector((state) => state.filter.sort)
     useEffect(() => {
-        fetch('https://62fbd962abd610251c12510e.mockapi.io/PC_Items')
+        fetch(`https://62fbd962abd610251c12510e.mockapi.io/PC_Items?${category}&sortBy=${sort}`)
             .then((response) => response.json())
             .then((data) => {
                 setItems(data)
                 setIsLoading(false)
             }
             );
-    }, [])
+    }, [categoryId, category, sort])
     return (
         <>
             {/* <ContentTop /> */}

@@ -5,7 +5,7 @@ import "./index.scss"
 const Categories = () => {
     const categoryId = useSelector((state) => state.filter.categoryId)
     const dispatch = useDispatch()
-    const list = ['PC', 'Keybord', 'Mouse', 'Accessories']
+    const list = ['All', 'Monitors', 'Mouses', 'Keyboards', 'Headsets']
     return (
         <div className="categories">
             <ul className="categories__list">
