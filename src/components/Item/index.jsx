@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./index.scss"
+import { useState } from 'react';
+import './index.scss';
 
 
 const Item = ({ imageUrl, title, price, description, colors }) => {

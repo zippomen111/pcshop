@@ -1,5 +1,5 @@
-import Categories from "../Categories";
-import Sort from "../Sort";
+import Categories from '../Categories';
+import Sort from '../Sort';
 
 const ContentTop = () => {
     return (

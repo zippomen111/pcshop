@@ -1,5 +1,5 @@
 import style from './index.module.scss';
-import logo from "./../../img/header-logo.png"
+import logo from './../../img/header-logo.png';
 const Logo = () => {
     return (
         <a href="/">

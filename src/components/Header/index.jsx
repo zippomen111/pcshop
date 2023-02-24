@@ -1,7 +1,7 @@
-import "./index.scss";
-import Logo from "./../Logo";
-import Search from "./../Search";
-import Cart from "../Cart";
+import './index.scss';
+import Logo from './../Logo';
+import Search from './../Search';
+import Cart from '../Cart';
 
 
 const Header = () => {

@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux"
-import { setCategory } from './../../redux/slices/filterSlice'
-import "./index.scss"
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from './../../redux/slices/filterSlice';
+import './index.scss';
 
 const Categories = () => {
     const categoryId = useSelector((state) => state.filter.categoryId)

@@ -1,6 +1,6 @@
-import style from "./index.module.scss";
-import cart from "./../../img/header-cart.png";
-import { Link } from "react-router-dom";
+import style from './index.module.scss';
+import cart from './../../img/header-cart.png';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     return (

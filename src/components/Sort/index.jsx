@@ -1,5 +1,5 @@
-import { setSort } from "../../redux/slices/filterSlice";
-import { useDispatch } from "react-redux";
+import { setSort } from '../../redux/slices/filterSlice';
+import { useDispatch } from 'react-redux';
 const Sort = () => {
     const dispatch = useDispatch();
     return (
