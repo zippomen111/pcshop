@@ -7,6 +7,7 @@ import debounce from 'lodash.debounce';
 const Search = () => {
     const delayAdd = debounce((el) => {
         dispatch(setSearchValue(el.target.value))
+
     }, 1000)
     const dispatch = useDispatch()
     return (
