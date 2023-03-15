@@ -10,14 +10,11 @@ import Item from '../components/Item';
 import Skeleton from '../components/Skeleton';
 
 const Home = () => {
-    //optimizar state import {...value}
     const [isLoading, setIsLoading] = useState(true)
     const [items, setItems] = useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const sort = useSelector((state) => state.filter.sort)
-    const searchValue = useSelector((state) => state.filter.searchValue)
-    const categoryId = useSelector((state) => state.filter.categoryId)
+    const { sort, searchValue, categoryId } = useSelector((state) => state.filter)
     const category = categoryId > 0 ? `category=${categoryId}` : ''
     const search = searchValue ? `search=${searchValue}` : ''
 
@@ -39,7 +36,7 @@ const Home = () => {
             );
     }, [category, categoryId, searchValue, search, sort])
 
-    //navigate string
+    //qs string
     useEffect(() => {
         const qString = qs.stringify({
             category: categoryId,
