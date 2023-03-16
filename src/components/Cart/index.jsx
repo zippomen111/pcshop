@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Cart = () => {
     const items = useSelector((state) => state.cart)
-    console.log(items.items.length)
-
     return (
         <Link to="/cart" className={style.cart}>
             <img className={style.img} src={cart} alt="cart" />

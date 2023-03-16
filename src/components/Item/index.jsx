@@ -37,7 +37,7 @@ const Item = ({ id, imageUrl, title, price, description, colors }) => {
             <h3 className="item__title">{title}</h3>
             <p className="item__description">{description}</p>
             <span className="item__price">{price}$</span>
-            <button onClick={onClickAdd} className="item__buy">Buy</button> 
+            <button onClick={onClickAdd} className="item__buy">Buy</button>
         </div>
     )
 }

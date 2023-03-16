@@ -1,8 +1,30 @@
 import style from './index.module.scss';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItem } from '../../redux/slices/cartSlice';
 const CartBlock = () => {
+    const items = useSelector((state) => state.cart.items)
+    const dispatch = useDispatch()
+    const onDelete = (id) => {
+        dispatch(removeItem(id))
+    }
     return (
-        <h1 className={style.root}>cart</h1>
+        <div className="container">
+            {
+                items.map(item => {
+                    return (
+                        <div key={item.id} className={style.root}>
+                            <img className={style.img} src={item.imageUrl} alt="icon" />
+                            <div className={style.description}>
+                                <h3>{item.title}</h3>
+                                <p>{item.color}</p>
+                            </div>
+                            <span>{item.price}$</span>
+                            <button onClick={() => onDelete(item.id)} className={style.button}>Delete</button>
+                        </div>
+                    )
+                })
+            }
+        </div>
     )
 }
 
