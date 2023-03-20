@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid black;
+    margin: 5px 0 5px;
 }
 
 .img {
@@ -21,4 +22,13 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.clearBtn {
+    margin: 5px 0 5px auto;
+
+    display: block;
+    font-size: 15px;
+    color: aquamarine;
+    background-color: black;
 }

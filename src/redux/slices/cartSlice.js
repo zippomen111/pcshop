@@ -17,17 +17,28 @@ export const cartSlice = createSlice({
 
         },
         removeItem: (state, action) => {
-            state.items = state.items.filter(obj => obj.id !== action.payload)
+            state.items = state.items.filter(obj => obj.id !== action.payload);
+            // state.totalPrice = state.totalPrice - action.payload;
+            // console.log(action.payload.price)
+            // console.log(action.payload)
+
+        },
+        changePrice: (state, action) => {
+            state.totalPrice = state.totalPrice - action.payload;
+            // state.totalPrice = state.totalPrice - action.payload;
+            // console.log(action.payload.price)
+            console.log(action.payload)
 
         },
         clearItems: (state) => {
-            state.items = []
+            state.items = [];
+            state.totalPrice = 0;
 
         },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, removeItem, clearItems } = cartSlice.actions
+export const { addItem, removeItem, clearItems, changePrice } = cartSlice.actions
 
 export default cartSlice.reducer
