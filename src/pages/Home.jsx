@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../redux/slices/filterSlice';
+import { setItem } from '../redux/slices/itemSlice';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
+import axios from 'axios';
 // import ContentTop from '../components/Content-top';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -11,13 +13,12 @@ import Skeleton from '../components/Skeleton';
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(true)
-    const [items, setItems] = useState([])
+    const items = useSelector((state) => state.item.items)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { sort, searchValue, categoryId } = useSelector((state) => state.filter)
     const category = categoryId > 0 ? `category=${categoryId}` : ''
-    const search = searchValue ? `search=${searchValue}` : ''
-
+    const search = searchValue ? `&search=${searchValue}` : ''
 
     useEffect(() => {
         if (window.location.search) {
@@ -25,16 +26,15 @@ const Home = () => {
             dispatch(setFilter({ ...params }))
         }
     }, [dispatch])
+
     //fetching data
     useEffect(() => {
-        fetch(`https://62fbd962abd610251c12510e.mockapi.io/PC_Items?${category}&sortBy=${sort}&${search}`)
-            .then((response) => response.json())
-            .then((data) => {
-                setItems(data)
-                setIsLoading(false)
-            }
-            );
-    }, [category, categoryId, searchValue, search, sort])
+        axios.get(`https://62fbd962abd610251c12510e.mockapi.io/PC_Items?${category}&sortBy=${sort}${search}`)
+            .then(res => {
+                dispatch(setItem(res.data))
+            })
+        setIsLoading(false)
+    }, [category, search, sort, dispatch])
 
     //qs string
     useEffect(() => {
@@ -45,7 +45,8 @@ const Home = () => {
         }, { addQueryPrefix: true })
         //insert string to url
         navigate(`${qString}`)
-    }, [categoryId, searchValue, search, sort, navigate])
+    }, [categoryId, searchValue, sort, navigate])
+
 
     return (
         <>
