@@ -1,8 +1,9 @@
 import style from './index.module.scss';
 import logo from './../../img/header-logo.png';
+import { Link } from 'react-router-dom';
 const Logo = () => {
     return (
-        <a href="/">
+        <Link to="/">
             <div className={style.logo}>
                 <img src={logo} alt="logo" className={style.img} />
                 <div className={style.description}>
@@ -10,7 +11,7 @@ const Logo = () => {
                     <p className={style.text}>The best place to buy!</p>
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 
