@@ -5,11 +5,13 @@ import { setSearchValue } from '../../redux/slices/filterSlice';
 import debounce from 'lodash.debounce';
 
 const Search = () => {
+    const dispatch = useDispatch()
     const delayAdd = debounce((el) => {
         dispatch(setSearchValue(el.target.value))
+        el.target.value = ''
 
     }, 1000)
-    const dispatch = useDispatch()
+
     return (
         <div className={style.search}>
             <img src={search} className={style.svg} alt="search"></img>

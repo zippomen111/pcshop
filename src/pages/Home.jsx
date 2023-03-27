@@ -1,25 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../redux/slices/filterSlice';
-import { setItem } from '../redux/slices/itemSlice';
+import { fetchItemsSlice } from '../redux/slices/itemSlice';
 import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
-import axios from 'axios';
-// import ContentTop from '../components/Content-top';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import Item from '../components/Item';
 import Skeleton from '../components/Skeleton';
 
 const Home = () => {
-    const [isLoading, setIsLoading] = useState(true)
-    const items = useSelector((state) => state.item.items)
+    const { items, status } = useSelector((state) => state.item)
+    const { sort, searchValue, categoryId } = useSelector((state) => state.filter)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { sort, searchValue, categoryId } = useSelector((state) => state.filter)
-    const category = categoryId > 0 ? `category=${categoryId}` : ''
-    const search = searchValue ? `&search=${searchValue}` : ''
 
+    //providing qs to redux
     useEffect(() => {
         if (window.location.search) {
             const params = qs.parse(window.location.search.substring(1))
@@ -27,14 +23,19 @@ const Home = () => {
         }
     }, [dispatch])
 
+    //fetching handler
+    const fetchItems = async () => {
+        const category = categoryId > 0 ? `category=${categoryId}` : ''
+        const search = searchValue ? `&search=${searchValue}` : ''
+        dispatch(fetchItemsSlice({ category, search, sort }))
+        window.scrollTo(0, 0)
+    }
     //fetching data
     useEffect(() => {
-        axios.get(`https://62fbd962abd610251c12510e.mockapi.io/PC_Items?${category}&sortBy=${sort}${search}`)
-            .then(res => {
-                dispatch(setItem(res.data))
-            })
-        setIsLoading(false)
-    }, [category, search, sort, dispatch])
+        fetchItems()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [sort, searchValue, categoryId])
+
 
     //qs string
     useEffect(() => {
@@ -50,7 +51,6 @@ const Home = () => {
 
     return (
         <>
-            {/* <ContentTop /> */}
             <div className="content-top">
                 <div className="container flex-wrap">
                     <Categories />
@@ -60,7 +60,7 @@ const Home = () => {
             <div className="container">
                 <div className="items">
                     {
-                        isLoading ? [...new Array(9)].map((_, index) => <Skeleton key={index} />)
+                        status === 'loading' ? [...new Array(9)].map((_, index) => <Skeleton key={index} />)
                             : items.map((items) => <Item {...items} key={items.id} />)
                     }
                 </div>
