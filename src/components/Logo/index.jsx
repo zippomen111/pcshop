@@ -1,9 +1,16 @@
 import style from './index.module.scss';
 import logo from './../../img/header-logo.png';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCategory } from '../../redux/slices/filterSlice';
+
 const Logo = () => {
+    const dispatch = useDispatch()
+    const categoryHandler = () => {
+        dispatch(setCategory(0))
+    }
     return (
-        <Link to="/">
+        <Link onClick={categoryHandler} to="/">
             <div className={style.logo}>
                 <img src={logo} alt="logo" className={style.img} />
                 <div className={style.description}>

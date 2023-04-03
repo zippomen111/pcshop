@@ -1,0 +1,23 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.img {
+    width: 450px;
+    height: 450px;
+}
+
+.title {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.description {
+    margin: 10px 0;
+    font-size: 25px;
+}

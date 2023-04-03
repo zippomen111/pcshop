@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from '../redux/slices/filterSlice';
 import { fetchItemsSlice } from '../redux/slices/itemSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -61,7 +61,7 @@ const Home = () => {
                 <div className="items">
                     {
                         status === 'loading' ? [...new Array(9)].map((_, index) => <Skeleton key={index} />)
-                            : items.map((items) => <Item {...items} key={items.id} />)
+                            : items.map((items) => <Link key={items.id} to={`/item/${items.id}`}><Item {...items} key={items.id} /></Link>)
                     }
                 </div>
             </div>
