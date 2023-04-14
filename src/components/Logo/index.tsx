@@ -2,12 +2,13 @@ import style from './index.module.scss';
 import logo from './../../img/header-logo.png';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCategory } from '../../redux/slices/filterSlice';
+import { setCategory, setSearchValue } from '../../redux/slices/filterSlice';
 
 const Logo = () => {
     const dispatch = useDispatch()
     const categoryHandler = () => {
         dispatch(setCategory(0))
+        dispatch(setSearchValue(''))
     }
     return (
         <Link onClick={categoryHandler} to="/">

@@ -1,7 +1,6 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-const Skeleton = () => (
+const Skeleton = (): JSX.Element => (
     <ContentLoader
         speed={2}
         width={200}

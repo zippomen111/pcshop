@@ -1,6 +1,6 @@
 import './index.scss';
-import Logo from './../Logo';
-import Search from './../Search';
+import Logo from '../Logo';
+import Search from '../Search';
 import Cart from '../Cart';
 
 

@@ -1,6 +1,6 @@
 import { setSort } from '../../redux/slices/filterSlice';
 import { useDispatch } from 'react-redux';
-const Sort = () => {
+const Sort = (): JSX.Element => {
     const dispatch = useDispatch();
     return (
         <div className="sort">

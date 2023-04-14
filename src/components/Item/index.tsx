@@ -3,9 +3,17 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
 import './index.scss';
 
+interface ItemProps {
+    id: number;
+    imageUrl: string;
+    title: string;
+    price: number;
+    description: string;
+    colors: string[];
+}
 
-const Item = ({ id, imageUrl, title, price, description, colors }) => {
-    const [isActive, setActive] = useState(0)
+const Item = ({ id, imageUrl, title, price, description, colors }: ItemProps) => {
+    const [isActive, setActive] = useState<number>(0)
     const dispatch = useDispatch()
     const onClickAdd = () => {
         const cartItem = {
@@ -22,7 +30,7 @@ const Item = ({ id, imageUrl, title, price, description, colors }) => {
             <img className="item__img" src={imageUrl} alt="article" />
             <div className="item__color">
                 {
-                    colors.map((item, i) => {
+                    colors.map((item: string, i: number) => {
                         return (
                             <button
                                 key={i}

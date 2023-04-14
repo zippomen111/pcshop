@@ -8,12 +8,13 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import Item from '../components/Item';
 import Skeleton from '../components/Skeleton';
+import { AppDispatch, RootState } from '../redux/store';
 
-const Home = () => {
-    const { items, status } = useSelector((state) => state.item)
-    const { sort, searchValue, categoryId } = useSelector((state) => state.filter)
+const Home = (): JSX.Element => {
+    const { items, status } = useSelector((state: RootState) => state.item)
+    const { sort, searchValue, categoryId } = useSelector((state: RootState) => state.filter)
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
 
     //providing qs to redux
     useEffect(() => {
@@ -25,10 +26,10 @@ const Home = () => {
 
     //fetching handler
     const fetchItems = async () => {
-        const category = categoryId > 0 ? `category=${categoryId}` : ''
-        const search = searchValue ? `&search=${searchValue}` : ''
-        dispatch(fetchItemsSlice({ category, search, sort }))
-        window.scrollTo(0, 0)
+        const category = categoryId > 0 ? `category=${categoryId}` : '';
+        const search = searchValue ? `&search=${searchValue}` : '';
+        dispatch(fetchItemsSlice({ category, search, sort }));
+        window.scrollTo(0, 0);
     }
     //fetching data
     useEffect(() => {

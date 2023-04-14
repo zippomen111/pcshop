@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from './../../redux/slices/filterSlice';
+import { setCategory } from '../../redux/slices/filterSlice';
 import './index.scss';
+import { RootState } from '../../redux/store';
+import { FC } from 'react';
 
-const Categories = () => {
-    const categoryId = useSelector((state) => state.filter.categoryId)
+const Categories: FC = (): JSX.Element => {
+    const categoryId = useSelector((state: RootState) => state.filter.categoryId)
     const dispatch = useDispatch()
-    const list = ['All', 'Monitors', 'Mouses', 'Keyboards', 'Headsets']
+    const list: string[] = ['All', 'Monitors', 'Mouses', 'Keyboards', 'Headsets']
     return (
         <div className="categories">
             <ul className="categories__list">
-                {list.map((item, i) => {
+                {list.map((item: string, i: number) => {
                     return (
                         <li
                             key={i}

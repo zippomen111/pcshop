@@ -3,10 +3,11 @@ import search from './../../img/search.svg';
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/filterSlice';
 import debounce from 'lodash.debounce';
+import { FC } from 'react';
 
-const Search = () => {
+const Search: FC = (): JSX.Element => {
     const dispatch = useDispatch()
-    const delayAdd = debounce((el) => {
+    const delayAdd = debounce((el: { target: { value: string; }; }) => {
         dispatch(setSearchValue(el.target.value))
         el.target.value = ''
 
