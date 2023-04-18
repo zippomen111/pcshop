@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-const Cart = React.lazy(() => import('./pages/Cart'));
-const FullItems = React.lazy(() => import('./pages/FullItems'))
-function App() {
+const Cart = React.lazy(() => import(/*webpackChunkName : "Cart" */'./pages/Cart'));
+const FullItems = React.lazy(() => import(/*webpackChunkName : "FullItems" */'./pages/FullItems'));
 
+function App() {
   return (
     <div className="App">
       <Header />
