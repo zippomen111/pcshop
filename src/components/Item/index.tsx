@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
 import './index.scss';
+import { Link } from 'react-router-dom';
 
 interface ItemProps {
     id: number;
@@ -27,7 +28,9 @@ const Item = ({ id, imageUrl, title, price, description, colors }: ItemProps) =>
     }
     return (
         <div className="item">
-            <img className="item__img" src={imageUrl} alt="article" />
+            <Link to={`/item/${id}`}>
+                <img className="item__img" src={imageUrl} alt="article" />
+            </Link>
             <div className="item__color">
                 {
                     colors.map((item: string, i: number) => {
